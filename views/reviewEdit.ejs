@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+    <form class="container p-5" action="/reviews/<%- review.id %>/edit" method="post">
+      
+      <div class="d-flex align-items-center gap-3 mb-4 " style="cursor: pointer;" onclick="redirect()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
+        </svg>
+        <h3 class="fs-5">Back to Reviews</h3>
+      </div>
+      <h2 class="my-4">Edit Your Review </h2>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Movie Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" value="<%- review.MovieName%>" name="userMN" placeholder="Ex : Venom">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Your Review</label>
+            <input class="form-control" id="exampleFormControlTextarea1" value="<%- review.MovieDesc%>" name="userMD"></input>
+          </div>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="btn-group">
+              <button
+              class="btn btn-sm btn-outline-secondary"
+                  type="submit"
+            >
+              Save
+            </button>
+              <a
+              href="/reviews"
+                type="button"
+                class="btn btn-outline-secondary btn-sm"
+              >
+                Cancel
+              </a>
+            </div>
+          </div>
+    </form>
+    <%- include('partials/footer.ejs') %>
+
+    <script>
+      function redirect() {
+       window.location.href="/reviews"
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+#home{
+    height: 68vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size:60px;
+    gap: 60px;
+
+}
+
+#home::before{
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: url('../images/banner.jpeg') no-repeat center/cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    filter: brightness(30%);
+
+}
+
+#loading{
+    width: 20%;
+    color: white;
+    margin: 0 auto;
+    display: none;
+}

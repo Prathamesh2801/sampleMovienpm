@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %>
+    <div id="home" class="container-fluid">
+      <% if (currentHour <=12) { %>
+      <h2>Good Morning User</h2>
+      <% } else if (currentHour <=16) { %>
+      <h2>Good AfterNoon User</h2>
+      <% } else if (currentHour <=20) { %>
+      <h2>Good Evening User</h2>
+      <% } else { %>
+      <h2>Good Night User</h2>
+      <% } %>
+
+      <form class="d-flex" role="search" action="/search" method="post">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          name="mn"
+          style="width: 400px"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+    <div id="loading">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p>Movie Data</p>
+    </div>
+    <%- include('partials/footer.ejs') %>
+
+    <script>
+      document.querySelector("form").addEventListener("submit", () => {
+        document.getElementById("loading").style.display = "block";
+      });
+    </script>
+  </body>
+</html>

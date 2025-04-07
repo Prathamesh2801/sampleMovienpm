@@ -1,0 +1,14 @@
+# Log files
+*.log
+*.log*
+# Temporary files
+*.tmp
+*.tmp*
+# Build artifacts
+/build/
+/dist/
+
+# Package manager cache : 
+/node_modules/
+/venv/
+/env/
