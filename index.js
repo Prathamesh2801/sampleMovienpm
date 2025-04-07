@@ -41,30 +41,32 @@ app.post("/reviews", async (req, res) => {
 app.get("/reviews/:id/edit", (req, res) => {
   const reviewId = req.params.id;
   console.log(reviewId);
-  const reviewData = reviews.find((r) => r.id === reviewId)
+  const reviewData = reviews.find((r) => r.id === reviewId);
   res.render("reviewEdit", { review: reviewData });
 });
 
-app.post("/reviews/:id/edit",(req,res)=>{
+app.post("/reviews/:id/edit", (req, res) => {
   const reviewId = req.params.id;
   console.log(reviewId);
-  const {userMN,userMD} = req.body;
-  const reviewIndex = reviews.findIndex((r)=> r.id === reviewId);
+  const { userMN, userMD } = req.body;
+  const reviewIndex = reviews.findIndex((r) => r.id === reviewId);
   if (reviewIndex === -1) {
-    res.status(404).send("Review Not Found")
+    res.status(404).send("Review Not Found");
   }
-  reviews[reviewIndex] = {...reviews[reviewIndex],MovieName:userMN,MovieDesc:userMD}
+  reviews[reviewIndex] = {
+    ...reviews[reviewIndex],
+    MovieName: userMN,
+    MovieDesc: userMD,
+  };
   res.redirect("/reviews");
-})
+});
 
-app.post("/reviews/:id/delete",(req,res)=>{
+app.post("/reviews/:id/delete", (req, res) => {
   const reviewId = req.params.id;
   console.log(reviewId);
-  reviews = reviews.filter((r)=> r.id !== reviewId);
+  reviews = reviews.filter((r) => r.id !== reviewId);
   res.redirect("/reviews");
-})
-
-
+});
 
 app.post("/searchReview", async (req, res) => {
   const userSearch = req.body["searchReview"].trim().toLowerCase();
@@ -95,6 +97,8 @@ app.post("/search", async (req, res) => {
     res.status(404).send("Movie Not Found");
   }
 });
-app.listen(3000, () => {
-  console.log(`Server Listening on Port : 3000`);
+const PORT = 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server Listening on Port: ${PORT}`);
 });
